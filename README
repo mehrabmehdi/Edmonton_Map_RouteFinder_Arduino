@@ -1,0 +1,78 @@
+Name: Alexander Chan
+Student ID: 1544806
+
+Name: Mehrab Mehdi Islam
+Student ID: 1545664
+
+Files imported
+  binary_heap.py
+  graph.py
+  client.cpp
+  consts_and_types.h
+  lcd_image.h
+  lcd_image.cpp
+  map_drawing.cpp
+  map_drawing.h
+  Makefile
+  
+Arduino Wiring:
+
+
+TFT Display:
+
+    The display pins are numbered left to right in this document when they are being viewed
+    with their labels showing rightside up. Note you do not require the touchscreen for this assignment,
+    so it is probably a lot easier to not wire the Y+/X+/Y-/X- pins.
+
+    Display Pin     Arduino Mega Pin
+    1 GND           BB GND bus
+    2 Vin           BB Vcc (+ive) bus
+
+    4 CLK           Pin 52
+    5 MISO          Pin 50
+    6 MOSI          Pin 51
+    7 CS            Pin 10
+    8 D/C           Pin 9
+
+    19 CCS          Pin 6
+
+Zoom in and out buttons:
+
+    Button          Arduino Mega Pin
+    Zoom In         Pin 2
+    Zoom Out        Pin 3
+
+Joystick connections:
+
+    Joystick Pin    Arduino Mega Pin
+    +5v             Vcc
+    GND             GND
+    VRx             Analog 1
+    VRy             Analog 0
+    SW              Pin 8
+
+Upload Instructions
+
+  enter the A1P2 directory from the terminal
+  Enter client directory and type "make upload"
+  Enter server directory and type "python3 server.py"
+
+Problems we faced while writing the program
+  There was confusion when we were creating the closest_vertices function.
+  We could not figure it out ourselves so we needed the TA's assistance in
+  making the function.
+  Also, there was a problem when calling the least_cost_path function. It
+  would always return that there was no vertex in the graph. However, this
+  turned out the be a mistake when we were calling the function from the
+  arduino_talk.
+
+Changes made to client
+  made a client_to_Server function which communicates with the server,
+  using a finite state machine to get the waypoints.
+  made a draw_route function which draws a line connection the waypoints.
+  called these functions in the int main()
+
+Changes make to server
+  Included a closest_vertices function with the assistance of the TA
+  Created an arduino_talk function that allows the server to communicate
+  with the arduino through encoding and decoding ASCII values.
